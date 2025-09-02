@@ -8,9 +8,14 @@ group = 'com.madhukar'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
-	}
+        toolchain {
+                // Use the JDK that is available in the execution environment. The
+                // previous configuration required JDK 17 which caused builds to fail
+                // when that version was not installed. Bumping the toolchain to the
+                // currently available JDK 21 lets the project compile and run tests
+                // without manual JDK downloads.
+                languageVersion = JavaLanguageVersion.of(21)
+        }
 }
 
 configurations {
